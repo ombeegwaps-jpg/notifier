@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>ROBLOX CONDO GAMES</title>
+<style>
+  :root {
+    --accent: #ff6600;
+  }
+
+  html, body {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: linear-gradient(135deg, #000000, #111111, #1a1a1a);
+    color: #fff;
+  }
+
+  .wrapper {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .header {
+    font-size: 2.2rem;
+    font-weight: 900;
+    margin-bottom: 20px;
+    color: var(--accent);
+    text-shadow: 0 0 10px var(--accent), 0 0 20px var(--accent);
+  }
+
+  /* Modal overlay */
+  .overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+  }
+
+  .modal {
+    background: #111;
+    padding: 26px;
+    border-radius: 14px;
+    text-align: center;
+    box-shadow: 0 0 30px var(--accent);
+  }
+
+  .modal h2 {
+    margin: 0 0 14px;
+    font-size: 1.6rem;
+    color: var(--accent);
+    text-shadow: 0 0 8px var(--accent);
+  }
+
+  .modal p {
+    color: #ccc;
+    margin-bottom: 18px;
+  }
+
+  .modal-btn {
+    padding: 12px 26px;
+    border-radius: 10px;
+    border: none;
+    font-weight: bold;
+    background: var(--accent);
+    color: #111;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(255, 102, 0, 0.6);
+    transition: transform 0.2s ease;
+  }
+
+  .modal-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 20px var(--accent);
+  }
+
+  /* Game picker */
+  .game-picker {
+    display: none;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.6s ease;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 30px;
+  }
+
+  .game-picker.show {
+    display: flex;
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .game-card {
+    background: rgba(255, 102, 0, 0.15);
+    border: 2px solid var(--accent);
+    border-radius: 12px;
+    padding: 14px 24px;
+    min-width: 160px;
+    color: #fff;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .game-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 0 15px var(--accent);
+  }
+
+  /* Discord button */
+  .discord-btn {
+    display: inline-block;
+    margin-top: 40px;
+    padding: 14px 32px;
+    border-radius: 12px;
+    background: var(--accent);
+    color: #111;
+    font-weight: bold;
+    text-decoration: none;
+    box-shadow: 0 0 20px var(--accent), 0 0 40px rgba(255, 102, 0, 0.6);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .discord-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 30px var(--accent), 0 0 60px rgba(255, 102, 0, 0.9);
+  }
+</style>
+</head>
+<body>
+
+<!-- Verification modal -->
+<div id="overlay" class="overlay">
+  <div class="modal">
+    <h2>Are you 18+ ?</h2>
+    <p>Please confirm your age to continue.</p>
+    <button class="modal-btn" id="modalYes">Confirm</button>
+  </div>
+</div>
+
+<div class="wrapper">
+  <div class="header">BEST ROBLOX CONDO GAMES</div>
+  <div id="gamePicker" class="game-picker"></div>
+
+  <!-- Discord button -->
+  <a href="https://discord.gg/RZf4Pbde3m" target="_blank" class="discord-btn">
+    Join Our Discord 🚀
+  </a>
+</div>
+
+<script>
+/* -------- Game list -------- */
+const games = [
+  { title: "Meet Your Neko Stacy [Update🥵]", link: "https://roblox.com.ge/games/131764904553992/Meet-Your-Neko-Stacy-Update?privateServerLinkCode=63776496008489733878933289493190" },
+  { title: "Weird Neko Untitled Game", link: "https://roblox.com.ge/games/76106209840076/Weird-Neko-Untitled-Game?privateServerLinkCode=63776496008489733878933289493190" },
+  { title: "Bubble Gum Simulator", link: "https://roblox.com.ge/games/18309026402/NEW-YEARS-Bubble-Gum-Simulator?privateServerLinkCode=63776496008489733878933289493190" },
+  { title: "[NEW UPDATE😍] Girl Weird Obby", link: "https://roblox.com.ge/games/139939943653096/NEW-Girl-Weird-Obby?privateServerLinkCode=63776496008489733878933289493190" },
+  { title: "teleport to weird neko", link: "https://roblox.com.ge/games/102438880728881/Teleport-To-Weird-Neko?privateServerLinkCode=63776496008489733878933289493190" },
+  { title: "steal obby vive", link: "https://roblox.com.ge/games/127188854693840/steal-obby-vibe?privateServerLinkCode=63776496008489733878933289493190" },
+  { title: "preppy play con", link: "https://roblox.com.ge/games/16599378115/PREPPY-SLAY-CON?privateServerLinkCode=63776496008489733878933289493190" },
+  { title: "AI NPC FREINDS", link: "https://roblox.com.ge/games/88848566014743/AI-NPC-Friends?privateServerLinkCode=63776496008489733878933289493190" },
+  { title: "Character AI", link: "https://roblox.com.ge/games/76518416077437/Character-AI?privateServerLinkCode=63776496008489733878933289493190" },
+];
+
+/* -------- Render games -------- */
+function loadGames() {
+  const container = document.getElementById("gamePicker");
+  container.innerHTML = games.map(game => `
+    <div class="game-card" onclick="window.open('${game.link}', '_blank')">
+      ${game.title}
+    </div>
+  `).join("");
+}
+
+/* -------- Modal confirm -------- */
+document.getElementById("modalYes").addEventListener("click", () => {
+  document.getElementById("overlay").style.display = "none";
+  const gamePicker = document.getElementById("gamePicker");
+  loadGames();
+  gamePicker.style.display = "flex";
+  setTimeout(() => gamePicker.classList.add("show"), 50);
+});
+</script>
+
+</body>
+</html>
